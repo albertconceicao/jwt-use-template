@@ -21,7 +21,7 @@ export const verify = ({token, secret}: IVerifyOptions) => {
   const decodedPayload = JSON.parse(
     Buffer
       .from(payloadSent, 'base64url')
-      .toString('utf-8')); // Para verificar data de expiração temos que decodar de base64url para utf-8
+      .toString('utf-8')); //To verify expiration date we have to decode to base64url from utf-8
 
 
   if(decodedPayload.exp < Date.now()) {

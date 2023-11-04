@@ -12,7 +12,7 @@ const token = sign({
     sub: '@developer.albert',
   },
   secret,
-})// Gerando token
+})// Generating token
 
 console.log({token})
 

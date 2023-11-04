@@ -13,6 +13,7 @@ export const generateSignature = ({
 }: IGenerateSignature) => {
   const hmac = createHmac('sha256',secret);
 
-  return  hmac.update(`${header}.${payload}`).digest('base64url');
+  return  hmac.update(`${header}.${payload}`).digest('base64url');  //To pass information to hmac tool we use update method and after that we use digest to generate  base64url
+
 }
 

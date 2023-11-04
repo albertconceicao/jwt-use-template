@@ -9,19 +9,19 @@ interface ISignOptions {
 export const sign = ({data, exp, secret}: ISignOptions) => {
 
   const header = {
-    alg: 'HS256',//Tipo de algoritmo
-    typ: 'JWT',//Tipo
+    alg: 'HS256',//Algorithm type
+    typ: 'JWT',//Type
   };
 
   const payload = {
     ...data,
-    iat: Date.now(),//Data em ms
+    iat: Date.now(),//Date in ms
     exp,
   };
 
   const base64EncodedHeader = Buffer
     .from(JSON.stringify(header))
-    .toString('base64url'); // Como formatar o código em base64URL
+    .toString('base64url'); //How to format code in base64url type
 
   const base64EncodedPayload = Buffer
     .from(JSON.stringify(payload))
@@ -33,8 +33,7 @@ export const sign = ({data, exp, secret}: ISignOptions) => {
     payload: base64EncodedPayload,
     secret,
   })
-  //Para passar info para hmac usamos update e depois ele digere a info em base64url
 
-  return `${base64EncodedHeader}.${base64EncodedPayload}.${signature}`;//Retorno do token
+  return `${base64EncodedHeader}.${base64EncodedPayload}.${signature}`;//Token return
 
 }
